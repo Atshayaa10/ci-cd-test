@@ -1,45 +1,27 @@
 import unittest
-from calculator import calculate_average
+from calculator import add
 
 class TestCalculator(unittest.TestCase):
-    def test_average_of_numbers(self):
-        self.assertAlmostEqual(calculate_average([10, 20, 30]), 20)
+    def test_add(self):
+        self.assertEqual(add(5, 3), 8)
+        self.assertEqual(add(-5, 3), -2)
+        self.assertEqual(add(5, -3), 2)
+        self.assertEqual(add(-5, -3), -8)
+        self.assertEqual(add(1000000000, 2000000000), 3000000000)
+        self.assertEqual(add(-1000000000, -2000000000), -3000000000)
 
-    def test_average_of_empty_list(self):
-        with self.assertRaises(ValueError):
-            calculate_average([])
-
-    def test_average_of_list_with_non_numeric_values(self):
+    def test_add_invalid_input(self):
         with self.assertRaises(TypeError):
-            calculate_average([10, 'a', 30])
-
-    def test_average_of_list_with_nan(self):
-        with self.assertRaises(ValueError):
-            calculate_average([10, float('nan'), 30])
-
-    def test_average_of_list_with_infinity(self):
-        with self.assertRaises(ValueError):
-            calculate_average([10, float('inf'), 30])
-
-    def test_average_of_list_with_negative_infinity(self):
-        with self.assertRaises(ValueError):
-            calculate_average([10, float('-inf'), 30])
-
-    def test_average_of_list_with_single_none_value(self):
+            add('a', 3)
         with self.assertRaises(TypeError):
-            calculate_average([10, None, 30])
-
-    def test_average_of_list_with_empty_string(self):
+            add(5, 'b')
         with self.assertRaises(TypeError):
-            calculate_average([10, '', 30])
+            add('a', 'b')
 
-    def test_average_of_list_with_single_infinity_value(self):
-        with self.assertRaises(ValueError):
-            calculate_average([float('inf')])
+    def test_add_invalid_input_message(self):
+        with self.assertRaises(TypeError) as e:
+            add('a', 3)
+        self.assertEqual(str(e.exception), "Both inputs must be numbers")
 
-    def test_average_of_list_with_single_negative_infinity_value(self):
-        with self.assertRaises(ValueError):
-            calculate_average([float('-inf')])
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()
