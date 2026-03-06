@@ -1,4 +1,4 @@
-def add(a, b):
+def add(a, b)
     """
     Returns the sum of two numbers.
 
@@ -14,7 +14,7 @@ def add(a, b):
     """
     if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
         raise TypeError("Both inputs must be numbers")
-    return a + b
+    return a + 
 
 # Print the result of the addition
 result = add(5, 3)
@@ -25,5 +25,5 @@ result = add(1000000000, 2000000000)
 print("The sum of 1000000000 and 2000000000 is:", result)
 
 # Print the result of the addition with negative numbers
-result = add(-1000000000, -2000000000)
+result = add(-1000000000, -2000000000
 print("The sum of -1000000000 and -2000000000 is:", result)
