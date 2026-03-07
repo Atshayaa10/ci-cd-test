@@ -1,11 +1,21 @@
 def add(a, b):
+    """
+    Adds two numbers together.
+
+    Args:
+        a (int): The first number.
+        b (int): The second number.
+
+    Returns:
+        int: The sum of a and b.
+
+    Notes:
+        Both inputs must be integers.
+    """
+    if not isinstance(a, int) or not isinstance(b, int):
+        raise TypeError("Both inputs must be integers")
+    print("The sum of {} and {} is: {}".format(a, b, a + b))
     return a + b
 
-# Fix the syntax error by closing the parenthesis
-print("The sum of 5 and 3 is:", add(5, 3))  # Added closing parenthesis
-
-# Additional check to ensure parenthesis is closed correctly
-try:
-    print("The sum of 5 and 3 is:", add(5, 3))
-except SyntaxError as e:
-    print(f"Syntax error detected: {e}")
+# Test the function
+add(5, 3)
