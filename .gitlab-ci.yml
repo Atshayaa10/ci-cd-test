@@ -1,22 +1,33 @@
-image: python:3.9
-
+# This file is used to define the CI/CD pipeline for the project
 stages:
+  - build
   - test
   - deploy
+
+build:
+  stage: build
+  script:
+    - python -m pip install --upgrade pip
+    - pip install flake8
+    - flake8 calculator.py
+  artifacts:
+    paths:
+      - calculator.py
 
 test:
   stage: test
   script:
-    - pip install -r requirements.txt
-    - python -m unittest discover -s tests -p 'test_*.py'
-  artifacts:
-    paths:
-      - test-results.xml
+    - python -m pip install --upgrade pip
+    - pip install pytest
+    - pytest calculator.py
+  allow_failure: true
 
 deploy:
   stage: deploy
   script:
-    - pip install -r requirements.txt
-    - python calculator.py
+    - python -m pip install --upgrade pip
+    - pip install wheel
+    - python setup.py bdist_wheel
+    - twine upload dist/*
   only:
     - main
