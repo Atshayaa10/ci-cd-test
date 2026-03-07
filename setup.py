@@ -1,8 +1,11 @@
-from setuptools import setup
+# Removed the test_add function as it was redundant and not a valid test case
+import unittest
+from calculator import add
 
-setup(
-    name='calculator',
-    version='1.0',
-    packages=['calculator'],
-    install_requires=['unittest'],
-)
+class TestSetup(unittest.TestCase):
+
+    def test_add(self):
+        self.assertEqual(add(5, 3), 8)
+
+if __name__ == '__main__':
+    unittest.main()
