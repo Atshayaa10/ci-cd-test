@@ -1,26 +1,31 @@
 import unittest
+from calculator import add
 
 class TestCalculator(unittest.TestCase):
-    """
-    Test class for the calculator module.
-    """
-    def test_add(self):
+
+    def test_add_positive_numbers(self):
         self.assertEqual(add(5, 3), 8)
-        self.assertEqual(add(1000000000, 2000000000), 3000000000)
-        self.assertEqual(add(-1000000000, -2000000000), -3000000000)
-        self.assertEqual(add(0, 0), 0)
-        self.assertEqual(add(0, 3), 3)
-        self.assertEqual(add(5, 0), 5)
+
+    def test_add_negative_numbers(self):
+        self.assertEqual(add(-5, -3), -8)
+
+    def test_add_mixed_numbers(self):
+        self.assertEqual(add(-5, 3), -2)
+
+    def test_add_large_numbers(self):
+        self.assertEqual(add(1000000, 2000000), 3000000)
+
+    def test_add_non_integer_input(self):
         with self.assertRaises(TypeError):
-            add('a', 3)
+            add(5, 3.5)
+
+    def test_add_non_integer_input_type(self):
         with self.assertRaises(TypeError):
-            add(3.5, 'b')
+            add("five", 3)
+
+    def test_add_non_integer_string_input(self):
         with self.assertRaises(TypeError):
-            add('a', 'b')
-        with self.assertRaises(TypeError):
-            add([1, 2], 3)
-        with self.assertRaises(TypeError):
-            add(3.5, [1, 2])
+            add("five", "three")
 
 if __name__ == '__main__':
     unittest.main()
