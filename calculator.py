@@ -6,7 +6,7 @@ print("The sum of 5 and 3 is:", add(5, 3))  # Added closing parenthesis
 
 # Additional check to ensure parenthesis is closed correctly
 try:
-    result = add(5, 3)
+    result = add(5, 3)  # Removed the syntax error
     print("The sum of 5 and 3 is:", result)
 except SyntaxError as e:
     print(f"Syntax error detected: {e}")
