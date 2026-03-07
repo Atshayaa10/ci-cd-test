@@ -1,4 +1,4 @@
-def add(a, b):
+def add(a: int, b: int) -> int:
     """
     Adds two numbers together.
 
@@ -9,13 +9,11 @@ def add(a, b):
     Returns:
         int: The sum of a and b.
 
-    Notes:
-        Both inputs must be integers.
+    Raises:
+        TypeError: If either a or b is not an integer.
     """
     if not isinstance(a, int) or not isinstance(b, int):
-        raise TypeError("Both inputs must be integers")
-    print("The sum of {} and {} is: {}".format(a, b, a + b))
+        raise TypeError("Both inputs must be integers.")
     return a + b
 
-# Test the function
-add(5, 3)
+print("The sum of 5 and 3 is:", add(5, 3))
