@@ -1,19 +1,19 @@
-def add(a, b
+def add(a, b):
     """
     Adds two numbers together.
 
     Args:
-        a (int): The first number.
-        b (int): The second number.
+        a: The first number.
+        b: The second number.
 
     Returns:
-        int: The sum of a and b.
+        The sum of a and b.
 
     Raises:
-        TypeError: If either a or b is not an integer.
+        TypeError: If either a or b is not an integer, float, complex, or None.
     """
-    if not isinstance(a, int) or not isinstance(b, int):
-        raise TypeError("Both inputs must be integers")
-    return a + 
-
-print("The sum of 5 and 3 is:", add(5, 3)
+    if not isinstance(a, (int, float, complex, type(None))) or not isinstance(b, (int, float, complex, type(None))):
+        raise TypeError("Both inputs must be integers, floats, complex numbers, or None")
+    if a is None or b is None:
+        raise TypeError("Both inputs must be integers, floats, complex numbers, or None")
+    return a + b
