@@ -1,1 +1,2 @@
-# No dependencies required for this example
+# Removed numpy as it's not being used
+unittest
