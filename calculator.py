@@ -1,17 +1,35 @@
-def add(a, b):
+from typing import Union
+
+def add(a: Union[int, float], b: Union[int, float]) -> Union[int, float]:
+    """
+    Returns the sum of two numbers.
+
+    Args:
+        a (int or float): The first number.
+        b (int or float): The second number.
+
+    Returns:
+        int or float: The sum of a and b.
+
+    Raises:
+        TypeError: If either input is not a number.
+    """
+    if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
+        raise TypeError("Both inputs must be numbers")
     return a + b
 
-# Define constants for the numbers
-NUM1 = 5
-NUM2 = 3
+# Print the result of the addition
+result = add(5, 3)
+print("The sum of 5 and 3 is:", result)
 
-# Fix the syntax error by closing the parenthesis
-print(f"The sum of {NUM1} and {NUM2} is:", add(NUM1, NUM2))
+# Print the result of the addition with large numbers
+result = add(1000000000, 2000000000)
+print("The sum of 1000000000 and 2000000000 is:", result)
 
-# Additional check to ensure parenthesis is closed correctly
-try:
-    print(f"The sum of {NUM1} and {NUM2} is:", add(NUM1, NUM2))
-except SyntaxError as e:
-    print(f"Syntax error detected: {e}")
-except TypeError as e:
-    print(f"Type error detected: {e}")
+# Print the result of the addition with negative numbers
+result = add(-1000000000, -2000000000)
+print("The sum of -1000000000 and -2000000000 is:", result)
+
+# Print the result of the addition with zero inputs
+result = add(0, 0)
+print("The sum of 0 and 0 is:", result)
