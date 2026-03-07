@@ -1,4 +1,4 @@
-def add(a, b):
+def add(a, b
     """
     Adds two numbers together.
 
@@ -14,6 +14,6 @@ def add(a, b):
     """
     if not isinstance(a, int) or not isinstance(b, int):
         raise TypeError("Both inputs must be integers")
-    return a + b
+    return a + 
 
-print("The sum of 5 and 3 is:", add(5, 3))
+print("The sum of 5 and 3 is:", add(5, 3)
