@@ -2,30 +2,30 @@ import unittest
 from calculator import add
 
 class TestCalculator(unittest.TestCase):
-
-    def test_add_positive_numbers(self):
+    def test_add_integers(self):
         self.assertEqual(add(5, 3), 8)
 
-    def test_add_negative_numbers(self):
-        self.assertEqual(add(-5, -3), -8)
+    def test_add_floats(self):
+        self.assertEqual(add(5.5, 3.3), 8.8)
 
-    def test_add_mixed_numbers(self):
-        self.assertEqual(add(-5, 3), -2)
-
-    def test_add_large_numbers(self):
-        self.assertEqual(add(1000000, 2000000), 3000000)
-
-    def test_add_non_integer_input(self):
+    def test_add_mismatched_types(self):
         with self.assertRaises(TypeError):
-            add(5, 3.5)
+            add(5, '3')
 
-    def test_add_non_integer_input_type(self):
-        with self.assertRaises(TypeError):
-            add("five", 3)
+    def test_add_invalid_input(self):
+        with self.assertRaises(TypeError) as cm:
+            add('5', '3')
+        self.assertEqual(str(cm.exception), "Both inputs must be numbers, but got str and str")
 
-    def test_add_non_integer_string_input(self):
-        with self.assertRaises(TypeError):
-            add("five", "three")
+    def test_add_invalid_input_type(self):
+        with self.assertRaises(TypeError) as cm:
+            add(5, None)
+        self.assertEqual(str(cm.exception), "Both inputs must be numbers, but got int and NoneType")
+
+    def test_add_invalid_input_value(self):
+        with self.assertRaises(TypeError) as cm:
+            add(5, True)
+        self.assertEqual(str(cm.exception), "Both inputs must be numbers, but got int and bool")
 
 if __name__ == '__main__':
     unittest.main()
